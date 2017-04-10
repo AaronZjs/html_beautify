@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>html 数字美化</title>
+</head>
+<body>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<style type="text/css">
+.JS-base-num{width:36px; height:60px; display:inline-block;background-image:url(./images/icon-num-skin.png); background-repeat:no-repeat;}
+.JS-num-0{background-position:0 0;}
+.JS-num-1{background-position:-42px 0;}
+.JS-num-2{background-position:-84px 0;}
+.JS-num-3{background-position:-126px 0;}
+.JS-num-4{background-position:-168px 0;}
+.JS-num-5{background-position:-210px 0;}
+.JS-num-6{background-position:-252px 0;}
+.JS-num-7{background-position:-294px 0;}
+.JS-num-8{background-position:-336px 0;}
+.JS-num-9{background-position:-378px 0;}
+.JS-num-point{background-position:-418px 0; width:20px;}
+.JS-num-per{background-position:-470px 0; width:20px;}
+.JS-num-yen{background-position:-442px 0; width:20px;}
+.JS-num-day{background-position:-498px 0; width:20px;}
+</style>
+<script type="text/javascript">
+  numSkin = function(obj , strBox){
+    $num = $(obj);
+    $num.each(numObj);
+    function numObj(){
+        var numVal = $(this).find(strBox).html().toString();
+        if(numVal.length == 0) return false;
+        $(this).find(strBox).remove();
+        $(this).find('em').remove();
+        var numBox = '';
+        for(var i=0; i <= numVal.length - 1; i++) {
+            var numInfo = numVal[i];
+            if(numVal[0] === undefined)  numInfo = numVal.charAt(i);
+            switch (numInfo){
+            case '0':
+              numBox += "<i class='JS-base-num JS-num-0' alt='0'></i>";
+              break;
+            case '1':
+              numBox += "<i class='JS-base-num JS-num-1' alt='1'></i>";
+              break;
+            case '2':
+              numBox += "<i class='JS-base-num JS-num-2' alt='2'></i>";
+              break;
+            case '3':
+              numBox += "<i class='JS-base-num JS-num-3' alt='3'></i>";
+              break;
+            case '4':
+              numBox += "<i class='JS-base-num JS-num-4' alt='4'></i>";
+              break;
+            case '5':
+              numBox += "<i class='JS-base-num JS-num-5' alt='5'></i>";
+              break;
+            case '6':
+              numBox += "<i class='JS-base-num JS-num-6' alt='6'></i>";
+              break;
+            case '7':
+              numBox += "<i class='JS-base-num JS-num-7' alt='7'></i>";
+              break;
+            case '8':
+              numBox += "<i class='JS-base-num JS-num-8' alt='8'></i>";
+              break;
+            case '9':
+              numBox += "<i class='JS-base-num JS-num-9' alt='9'></i>";
+              break;
+            case ',':
+              numBox += "<i class='JS-base-num JS-num-point' alt=','></i>";
+              break;
+            case '，':
+              numBox += "<i class='JS-base-num JS-num-point' alt=','></i>";
+              break;
+            default:
+              numBox += "<i class='JS-base-num JS-num-point' alt=','></i>";
+            }
+        };
+        $(numBox).prependTo(this);
+    };
+  };
+  // 初始化
+  $(function(){
+    numSkin('.JS-num-set' , '.JS-num-val');
+  });
+
+</script>
+
+
+<div class="num-skin JS-num-set">
+    <span class="JS-num-val">199,710,07</span>
+    <i class="JS-base-num JS-num-yen"></i>
+</div>
+
+
+</body>
+</html>
